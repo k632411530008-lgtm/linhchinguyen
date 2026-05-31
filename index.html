@@ -425,12 +425,49 @@
       border: 1px solid rgba(37, 99, 235, 0.12);
     }
 
-    .contact-card {
-      background:
-        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
-      color: white;
-      border: none;
-    }
+    ```css
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  border: none;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.58),
+      rgba(15, 23, 42, 0.72)
+    ),
+    url("chingulam.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.contact-card h3,
+.contact-card p,
+.contact-card a,
+.contact-card strong {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-card h3 {
+  color: white;
+}
+
+.contact-card p {
+  color: #f8fafc;
+}
+
+.contact-card a {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+```
+
 
     .contact-card h3 {
       color: white;
