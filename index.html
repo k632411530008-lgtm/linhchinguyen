@@ -7,336 +7,572 @@
   <title>Nguyễn Linh Chi | Logistics Portfolio</title>
 
   <style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
-    color: #0f172a;
-    line-height: 1.6;
-  }
-
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    width: 300px;
-    color: white;
-    padding: 40px 30px;
-    position: fixed;
-    height: 100vh;
-    box-sizing: border-box;
-    overflow: hidden;
-    background-image:
-      linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.92)),
-      url("chingungu.jpg");
-    background-size: cover;
-    background-position: center;
-    box-shadow: 8px 0 30px rgba(15, 23, 42, 0.18);
-  }
-
-  .sidebar > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid #60a5fa;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    transition: transform 0.35s ease;
-  }
-
-  .avatar:hover {
-    transform: scale(1.04);
-  }
-
-  .sidebar h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-
-  .sidebar p {
-    color: #cbd5e1;
-    font-size: 15px;
-    margin: 6px 0;
-  }
-
-  .nav {
-    margin-top: 40px;
-  }
-
-  .nav a {
-    display: block;
-    color: #e2e8f0;
-    text-decoration: none;
-    margin: 15px 0;
-    font-size: 16px;
-    position: relative;
-    width: fit-content;
-    padding-bottom: 6px;
-    transition: color 0.25s ease, transform 0.25s ease;
-  }
-
-  .nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background: #60a5fa;
-    border-radius: 999px;
-    transition: width 0.3s ease;
-  }
-
-  .nav a:hover,
-  .nav a.active {
-    color: #ffffff;
-    transform: translateX(6px);
-  }
-
-  .nav a:hover::after,
-  .nav a.active::after {
-    width: 100%;
-  }
-
-  .main {
-    margin-left: 300px;
-    padding: 60px 80px;
-    max-width: 900px;
-  }
-
-  section {
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.75s ease, transform 0.75s ease;
-  }
-
-  section.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  h2 {
-    font-size: 28px;
-    position: relative;
-    margin-bottom: 24px;
-    padding-bottom: 10px;
-    color: #0f172a;
-  }
-
-  h2::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 70px;
-    height: 3px;
-    background: linear-gradient(90deg, #2563eb, #60a5fa);
-    border-radius: 999px;
-  }
-
-  h3 {
-    margin-bottom: 5px;
-    color: #1e293b;
-  }
-
-  .tagline {
-    font-size: 22px;
-    color: #2563eb;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.94);
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-    margin-bottom: 20px;
-    border: 1px solid rgba(148, 163, 184, 0.12);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.14);
-  }
-
-  .button {
-    display: inline-block;
-    background-color: #2563eb;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    margin-right: 10px;
-    margin-top: 10px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
-  }
-
-  .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
-  }
-
-  .button.secondary {
-    background-color: #0f172a;
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.2);
-  }
-
-  .button.secondary:hover {
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.28);
-  }
-
-  ul {
-    padding-left: 20px;
-  }
-
-  footer {
-    color: #64748b;
-    font-size: 14px;
-    margin-top: 80px;
-  }
-
-  @media (max-width: 800px) {
-    .container {
-      display: block;
+    :root {
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --text: #334155;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: rgba(148, 163, 184, 0.25);
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.10), transparent 35%),
+        linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
 
     .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 42px 32px;
+      color: white;
+      overflow: hidden;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.94)),
+        url("chingungu.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 12px 0 35px rgba(15, 23, 42, 0.25);
     }
 
-    .main {
-      margin-left: 0;
-      padding: 35px 25px;
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.28), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.22), transparent 30%);
+      pointer-events: none;
     }
-  }
-</style>
+
+    .sidebar-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .avatar {
+      width: 142px;
+      height: 142px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+      margin-bottom: 22px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.04) rotate(1deg);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .sidebar h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      margin: 12px 0 4px;
+      color: #dbeafe;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .university {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .sidebar-divider {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, #60a5fa, #ffffff);
+      border-radius: 999px;
+      margin: 24px 0 10px;
+    }
+
+    .nav {
+      margin-top: 22px;
+    }
+
+    .nav a {
+      display: block;
+      width: fit-content;
+      position: relative;
+      text-decoration: none;
+      color: #e2e8f0;
+      font-size: 16px;
+      margin: 15px 0;
+      padding-bottom: 7px;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #60a5fa, #ffffff);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: #ffffff;
+      transform: translateX(7px);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .sidebar-note {
+      margin-top: auto;
+      font-size: 13px;
+      color: #cbd5e1;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      padding-top: 18px;
+    }
+
+    /* MAIN */
+
+    .main {
+      margin-left: 320px;
+      width: calc(100% - 320px);
+      padding: 58px 8vw 60px;
+    }
+
+    section {
+      max-width: 980px;
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.92));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 46px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 220px;
+      height: 220px;
+      background: rgba(37, 99, 235, 0.12);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 999px;
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      color: var(--navy);
+      font-size: 32px;
+      line-height: 1.25;
+      letter-spacing: -0.4px;
+      position: relative;
+      padding-bottom: 13px;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 72px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      border-radius: 999px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      max-width: 760px;
+      padding-bottom: 0;
+    }
+
+    .hero h2::after {
+      display: none;
+    }
+
+    .hero-text {
+      max-width: 760px;
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 28px;
+    }
+
+    .highlight {
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #1d4ed8;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.34);
+    }
+
+    .button.secondary {
+      background: var(--navy);
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.22);
+    }
+
+    .button.secondary:hover {
+      background: #020617;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.30);
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.13);
+      border-color: rgba(37, 99, 235, 0.28);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 21px;
+    }
+
+    .meta {
+      color: var(--blue);
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .date {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 15px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      min-height: 100%;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+    }
+
+    .contact-card {
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
+      color: white;
+      border: none;
+    }
+
+    .contact-card h3 {
+      color: white;
+    }
+
+    .contact-card p {
+      color: #dbeafe;
+    }
+
+    .contact-card a {
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    footer {
+      max-width: 980px;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .container {
+        display: block;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 34px 26px;
+      }
+
+      .sidebar-content {
+        height: auto;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        margin-top: 22px;
+      }
+
+      .nav a {
+        margin: 4px 0;
+      }
+
+      .sidebar-note {
+        margin-top: 28px;
+      }
+
+      .main {
+        width: 100%;
+        margin-left: 0;
+        padding: 38px 22px 48px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-card {
+        padding: 30px 24px;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <script>
-  const sections = document.querySelectorAll("main section");
-  const navLinks = document.querySelectorAll(".nav a");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, {
-    threshold: 0.15
-  });
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-
-  function setActiveLink() {
-    let current = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 140;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", setActiveLink);
-  window.addEventListener("load", () => {
-    setActiveLink();
-    document.querySelectorAll("main section").forEach((section, index) => {
-      setTimeout(() => {
-        section.classList.add("show");
-      }, index * 120);
-    });
-  });
-</script>
   <div class="container">
 
     <aside class="sidebar">
-      <img src="chingu.jpg" alt="Nguyễn Linh Chi" class="avatar">
+      <div class="sidebar-content">
+        <img src="chingu.jpg" alt="Nguyễn Linh Chi" class="avatar">
 
-      <h1>Nguyễn Linh Chi</h1>
-      <p>Logistics & Supply Chain Student</p>
-      <p>Foreign Trade University</p>
+        <h1>Nguyễn Linh Chi</h1>
+        <p class="role">Logistics & Supply Chain Student</p>
+        <p class="university">Foreign Trade University</p>
 
-      <div class="nav">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#activities">Activities</a>
-        <a href="#contact">Contact</a>
+        <div class="sidebar-divider"></div>
+
+        <nav class="nav">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#interests">Interests</a>
+          <a href="#activities">Activities</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <p class="sidebar-note">
+          Open to internship opportunities in logistics, supply chain, and international e-commerce operations.
+        </p>
       </div>
     </aside>
 
     <main class="main">
 
-      <section id="home">
-        <p class="tagline">Hi, I’m Linh Chi</p>
-        <h2>Future Logistics & Supply Chain Professional</h2>
-        <p>
-  I am a Logistics and Supply Chain Management student at Foreign Trade University
-  with a strong academic background and hands-on exposure to international e-commerce logistics.
-</p>
-<p>
-  I am interested in export documentation, transportation, warehouse operations,
-  freight forwarding, and supply chain coordination.
-</p>
+      <section id="home" class="hero">
+        <div class="hero-card">
+          <p class="eyebrow">Hi, I’m Linh Chi</p>
 
-        <a class="button" href="#contact">Contact Me</a>
-        <a class="button secondary" href="#experience">View Experience</a>
+          <h2>
+            Future Logistics & Supply Chain Professional
+          </h2>
+
+          <p class="hero-text">
+            I am a Logistics and Supply Chain Management student at
+            <span class="highlight">Foreign Trade University</span>,
+            with a strong academic background and hands-on exposure to
+            <span class="highlight">international e-commerce logistics</span>,
+            export documentation, and cross-border shipping operations.
+          </p>
+
+          <div class="button-group">
+            <a class="button" href="#contact">Contact Me</a>
+            <a class="button secondary" href="#experience">View Experience</a>
+          </div>
+        </div>
       </section>
 
       <section id="about">
-        <h2>About Me</h2>
+        <h2 class="section-title">About Me</h2>
+
         <div class="card">
           <p>
-            I am currently pursuing a major in Logistics and Supply Chain Management
-            at Foreign Trade University. My goal is to gain practical experience in
-            logistics operations and apply academic knowledge to real business environments.
+            I am currently pursuing a major in Logistics and Supply Chain Management at
+            Foreign Trade University. My goal is to gain practical experience in logistics
+            operations and apply academic knowledge to real business environments.
           </p>
+
           <p>
-            Through my internship at Vietnam Post Logistics, I had the opportunity to
-            learn about export documentation and international e-commerce shipping processes,
-            especially related to Amazon.
+            Through my internship at Vietnam Post Logistics, I had the opportunity to learn
+            about export documentation and international e-commerce shipping processes,
+            especially related to Amazon. This experience helped me better understand how
+            logistics supports cross-border commerce and business operations.
           </p>
         </div>
       </section>
 
       <section id="experience">
-        <h2>Experience</h2>
+        <h2 class="section-title">Experience</h2>
 
         <div class="card">
           <h3>Logistics Intern — Vietnam Post Logistics</h3>
-          <p><strong>International E-commerce Department</strong></p>
-          <p>Oct 2025 – Jan 2026</p>
+          <p class="meta">International E-commerce Department</p>
+          <p class="date">Oct 2025 – Jan 2026</p>
+
           <ul>
             <li>Learned about export documentation required for international e-commerce shipments.</li>
             <li>Studied the export process for goods sold on global platforms, especially Amazon.</li>
@@ -346,7 +582,8 @@
 
         <div class="card">
           <h3>Math and Physics Tutor</h3>
-          <p>2024 – Present</p>
+          <p class="date">2024 – Present</p>
+
           <ul>
             <li>Designed personalized learning plans for students based on their abilities and needs.</li>
             <li>Developed communication, explanation, patience, and time management skills.</li>
@@ -355,16 +592,17 @@
       </section>
 
       <section id="education">
-        <h2>Education</h2>
+        <h2 class="section-title">Education</h2>
 
         <div class="card">
           <h3>Foreign Trade University</h3>
-          <p><strong>Logistics and Supply Chain Management</strong></p>
-          <p>2024 – 2027 expected</p>
+          <p class="meta">Logistics and Supply Chain Management</p>
+          <p class="date">2024 – 2027 expected</p>
         </div>
 
         <div class="card">
           <h3>Academic Achievements</h3>
+
           <ul>
             <li>First Prize in Provincial Excellent Student Contest — Mathematics, 2024</li>
             <li>Second Prize in Provincial Excellent Student Contest — Physics, 2024</li>
@@ -374,67 +612,105 @@
       </section>
 
       <section id="skills">
-        <h2>Skills</h2>
+        <h2 class="section-title">Skills</h2>
 
-        <div class="card">
-          <h3>Logistics & Supply Chain</h3>
-          <ul>
-            <li>Export documentation</li>
-            <li>International e-commerce logistics</li>
-            <li>Basic understanding of warehouse, transportation, and forwarding operations</li>
-          </ul>
+        <div class="grid">
+          <div class="card skill-card">
+            <h3>Logistics & Supply Chain</h3>
+            <div class="pill-list">
+              <span class="pill">Export Documentation</span>
+              <span class="pill">E-commerce Logistics</span>
+              <span class="pill">Transportation</span>
+              <span class="pill">Warehouse Operations</span>
+              <span class="pill">Forwarding Basics</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Tools</h3>
+            <div class="pill-list">
+              <span class="pill">Microsoft Word</span>
+              <span class="pill">Excel</span>
+              <span class="pill">PowerPoint</span>
+              <span class="pill">Visual Presentation</span>
+              <span class="pill">Image Editing</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Soft Skills</h3>
+            <div class="pill-list">
+              <span class="pill">Teamwork</span>
+              <span class="pill">Communication</span>
+              <span class="pill">Time Management</span>
+              <span class="pill">Responsibility</span>
+              <span class="pill">Fast Learning</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Languages</h3>
+            <div class="pill-list">
+              <span class="pill">Vietnamese</span>
+              <span class="pill">English</span>
+              <span class="pill">Chinese</span>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section id="interests">
+        <h2 class="section-title">Career Interests</h2>
 
         <div class="card">
-          <h3>Tools</h3>
-          <ul>
-            <li>Microsoft Word, Excel, PowerPoint</li>
-            <li>Visual presentation and image editing</li>
-            <li>Technology-assisted working and learning</li>
-          </ul>
-        </div>
+          <p>
+            I am especially interested in roles and learning opportunities related to:
+          </p>
 
-        <div class="card">
-          <h3>Soft Skills</h3>
-          <ul>
-            <li>Teamwork and communication</li>
-            <li>Time management</li>
-            <li>Responsibility and fast learning</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Languages</h3>
-          <ul>
-            <li>Vietnamese</li>
-            <li>English</li>
-            <li>Chinese</li>
-          </ul>
+          <div class="pill-list">
+            <span class="pill">International E-commerce Logistics</span>
+            <span class="pill">Export & Import Documentation</span>
+            <span class="pill">Freight Forwarding</span>
+            <span class="pill">Warehouse Operations</span>
+            <span class="pill">Supply Chain Coordination</span>
+            <span class="pill">Logistics Process Optimization</span>
+          </div>
         </div>
       </section>
 
       <section id="activities">
-        <h2>Activities</h2>
+        <h2 class="section-title">Activities</h2>
 
         <div class="card">
           <h3>Volunteer Club Member</h3>
-          <p>Phan Đăng Lưu High School, 2021 – 2024</p>
+          <p class="meta">Phan Đăng Lưu High School</p>
+          <p class="date">2021 – 2024</p>
+
           <ul>
             <li>Participated in community activities such as environmental cleaning and supporting disadvantaged people.</li>
-            <li>Developed teamwork, communication, and time management skills.</li>
+            <li>Developed teamwork, communication, and time management skills through volunteer work.</li>
           </ul>
         </div>
       </section>
 
       <section id="contact">
-        <h2>Contact</h2>
+        <h2 class="section-title">Contact</h2>
 
-        <div class="card">
-          <p><strong>Email:</strong> linhchi2042006@gmail.com</p>
-          <p><strong>Location:</strong> Hanoi, Vietnam</p>
+        <div class="card contact-card">
+          <h3>Let’s connect</h3>
+
           <p>
             I am open to internship opportunities in logistics, supply chain,
             international e-commerce logistics, and export-import operations.
+          </p>
+
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:linhchi2042006@gmail.com">linhchi2042006@gmail.com</a>
+          </p>
+
+          <p>
+            <strong>Location:</strong> Hanoi, Vietnam
           </p>
         </div>
       </section>
@@ -445,5 +721,55 @@
 
     </main>
   </div>
+
+  <script>
+    const sections = document.querySelectorAll("main section");
+    const navLinks = document.querySelectorAll(".nav a");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    function setActiveLink() {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 180;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", setActiveLink);
+
+    window.addEventListener("load", () => {
+      setActiveLink();
+
+      sections.forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add("show");
+        }, index * 100);
+      });
+    });
+  </script>
 </body>
 </html>
